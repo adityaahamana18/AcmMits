@@ -1,53 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { createPortal } from 'react-dom';
 import { RECRUITMENT_FORM_URL } from '../constants';
-import FestiveLoadingCrackers from './FestiveLoadingCrackers';
 import './DiwaliHero.css';
 
-const INTRO_SEEN_KEY = 'acm-diwali-intro-seen';
-const INTRO_DURATION_MS = 3200;
-
-const shouldPlayIntro = () => {
-  if (typeof window === 'undefined' || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    return false;
-  }
-  try {
-    return window.sessionStorage.getItem(INTRO_SEEN_KEY) !== 'true';
-  } catch {
-    return true;
-  }
-};
-
 const DiwaliHero = () => {
-  const [introPlaying, setIntroPlaying] = useState(shouldPlayIntro);
-
-  const finishIntro = () => {
-    setIntroPlaying(false);
-    try {
-      window.sessionStorage.setItem(INTRO_SEEN_KEY, 'true');
-    } catch {
-      // safe fallback
-    }
-  };
-
-  useEffect(() => {
-    if (!introPlaying) return undefined;
-    const timer = window.setTimeout(finishIntro, INTRO_DURATION_MS);
-    return () => window.clearTimeout(timer);
-  }, [introPlaying]);
-
-  useEffect(() => {
-    if (!introPlaying) return undefined;
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = 'hidden';
-    return () => {
-      document.body.style.overflow = previousOverflow;
-    };
-  }, [introPlaying]);
-
   return (
-    <>
       <section className="diwali-seasonal-hero">
         <div className="diwali-seasonal-hero__orbit diwali-seasonal-hero__orbit--outer" aria-hidden="true" />
         <div className="diwali-seasonal-hero__orbit diwali-seasonal-hero__orbit--inner" aria-hidden="true" />
@@ -119,64 +76,6 @@ const DiwaliHero = () => {
           </div>
         </div>
       </section>
-
-      {/* 3D-STYLED ULTRA FESTIVE DIWALI LOADING SCREEN (WITH BURSTING CRACKERS & 3D FLOATING PERSPECTIVE) */}
-      {introPlaying && createPortal(
-        <div
-          className="festive-diwali-loader"
-          role="dialog"
-          aria-modal="true"
-          aria-label="Happy Diwali Greetings"
-          onClick={finishIntro}
-        >
-          {/* Crackers explosion background on loading screen only */}
-          <FestiveLoadingCrackers />
-
-          {/* 3D Glowing Festive Greeting Container */}
-          <div className="festive-diwali-3d-wrapper">
-            <div className="festive-diwali-card festive-3d-card">
-              {/* 3D Golden Gyroscope Rings */}
-              <div className="festive-gold-ring ring-outer festive-gyro-3d" />
-              <div className="festive-gold-ring ring-inner festive-gyro-3d-reverse" />
-
-              {/* Glowing 3D Lantern Icon */}
-              <div className="festive-3d-icon-bubble">
-                <i className="bi bi-stars fs-2 text-warning animate-pulse"></i>
-              </div>
-
-              <div className="festive-badge">
-                ✨ MITS ACM GREETINGS ✨
-              </div>
-
-              <h1 className="festive-diwali-title">
-                Happy <span className="festive-glow-text">Diwali!</span>
-              </h1>
-
-              <p className="festive-diwali-tagline">
-                May the divine radiance of the festival illuminate your ambitions, bring peace, joy & infinite success.
-              </p>
-
-              {/* Animated Progress bar */}
-              <div className="festive-loader-bar">
-                <div className="festive-loader-progress" />
-              </div>
-
-              <div className="festive-action-row">
-                <span className="festive-chapter-label">MITS ACM STUDENT CHAPTER</span>
-                <button 
-                  type="button" 
-                  className="festive-skip-btn" 
-                  onClick={(e) => { e.stopPropagation(); finishIntro(); }}
-                >
-                  Enter Site <i className="bi bi-arrow-right ms-1"></i>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>,
-        document.body
-      )}
-    </>
   );
 };
 
