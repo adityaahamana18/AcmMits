@@ -12,7 +12,6 @@ const Navbar = () => {
     { name: 'Learning Hub', path: '/learning-hub' },
     { name: 'Achievements', path: '/achievements' },
     { name: 'Gallery', path: '/gallery' },
-    { name: 'Join Us', path: '/join-us' },
     { name: 'Contact', path: '/contact' },
   ];
 
@@ -20,7 +19,7 @@ const Navbar = () => {
     <nav className="navbar navbar-expand-xxl acm-navbar sticky-top py-3">
       <div className="container">
         
-        {/* Brand Logo & Official Chapter Name */}
+        {/* Brand Logo & Chapter Name */}
         <Link to="/" className="navbar-brand d-flex align-items-center gap-2 text-decoration-none">
           <div 
             className="p-1 rounded-3 d-flex align-items-center justify-content-center"
@@ -35,11 +34,11 @@ const Navbar = () => {
             </div>
           </div>
           <div className="d-flex flex-column acm-navbar-brand-copy">
-            <span className="fw-bolder text-white font-heading lh-1 acm-navbar-brand-title">
-              MITS ACM STUDENT CHAPTER
+            <span className="fw-bolder font-heading lh-1 acm-navbar-brand-title">
+              ACM
             </span>
-            <span className="text-secondary acm-navbar-brand-subtitle">
-              Madhav Institute of Technology & Science
+            <span className="acm-navbar-brand-subtitle">
+              Student Chapter
             </span>
           </div>
         </Link>

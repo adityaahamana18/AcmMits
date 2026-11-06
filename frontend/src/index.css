@@ -157,12 +157,12 @@ code, pre {
 .acm-navbar-brand-title {
   font-size: clamp(0.75rem, 3.8vw, 1.05rem);
   letter-spacing: 0.04em;
+  color: var(--acm-accent);
 }
 
 .acm-navbar-brand-subtitle {
-  font-size: clamp(0.5rem, 2.1vw, 0.68rem);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  color: #fff;
+  font-size: clamp(0.65rem, 2.1vw, 0.8rem);
 }
 
 .acm-navbar .navbar-toggler {
