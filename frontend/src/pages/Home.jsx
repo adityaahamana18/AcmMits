@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
 import { api } from '../services/api';
+import DiwaliHero from '../components/DiwaliHero';
 
 const Home = () => {
   const [settings, setSettings] = useState({});
@@ -57,47 +57,7 @@ const Home = () => {
         </div>
       )}
 
-      {/* HERO SECTION */}
-      <section className="container py-5 my-md-4 text-center position-relative z-1 hero-section">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6 }}
-        >
-          <span className="badge-acm mb-4 d-inline-flex align-items-center gap-2 hero-affiliation">
-            <i className="bi bi-stars text-info"></i> Affiliated with ACM (Association for Computing Machinery)
-          </span>
-
-          <h1 className="display-3 fw-bolder font-heading text-white hero-heading mb-3">
-            MITS ACM <br />
-            <span className="text-gradient-acm">STUDENT CHAPTER</span>
-          </h1>
-
-          <p className="fs-4 fw-semibold text-light mb-2 font-heading hero-tagline" style={{ letterSpacing: '0.05em' }}>
-            {settings.tagline || 'Code. Create. Connect.'}
-          </p>
-
-          <p className="lead text-secondary mx-auto mb-5 hero-description" style={{ maxWidth: '640px', fontSize: '1.15rem' }}>
-            {settings.hero_supporting_text || 'Empowering the next generation of computing professionals at MITS Gwalior.'}
-          </p>
-
-          {/* CTA Buttons - fully responsive */}
-          <div className="d-flex flex-column flex-sm-row justify-content-center gap-3 hero-actions">
-            <Link to="/events" className="btn btn-acm-primary px-4 py-3 d-flex align-items-center justify-content-center gap-2">
-              <span>Explore Events</span>
-              <i className="bi bi-calendar-event"></i>
-            </Link>
-            <Link to="/team" className="btn btn-acm-outline px-4 py-3 d-flex align-items-center justify-content-center gap-2">
-              <span>Meet Our Team</span>
-              <i className="bi bi-people"></i>
-            </Link>
-            <Link to="/join-us" className="btn btn-acm-outline px-4 py-3 text-info border-info border-opacity-25 d-flex align-items-center justify-content-center gap-2">
-              <span>Join Chapter</span>
-              <i className="bi bi-send-check"></i>
-            </Link>
-          </div>
-        </motion.div>
-      </section>
+      <DiwaliHero />
 
       {/* STATS SECTION */}
       <section className="border-top border-bottom border-secondary border-opacity-25 py-4 my-5" style={{ background: 'rgba(3, 7, 18, 0.7)' }}>
