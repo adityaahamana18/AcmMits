@@ -189,11 +189,11 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* DEVELOPER PROFILE POPUP MODAL */}
+      {/* DEVELOPER PROFILE POPUP MODAL (MODERN MONOGRAM BADGE - NO IMAGES) */}
       {activeDev && createPortal(
         <div 
           className="position-fixed top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center p-3"
-          style={{ background: 'rgba(0, 0, 0, 0.85)', backdropFilter: 'blur(10px)', zIndex: 10000 }}
+          style={{ background: 'rgba(0, 0, 0, 0.85)', backdropFilter: 'blur(12px)', zIndex: 10000 }}
           onClick={() => setActiveDev(null)}
         >
           <div 
@@ -212,25 +212,28 @@ const Footer = () => {
               <i className="bi bi-x-lg text-secondary"></i>
             </button>
 
-            {/* Profile Content */}
+            {/* Profile Monogram (Clean, Professional, No Image) */}
             <div className="text-center mb-4">
-              <div className="position-relative d-inline-block mb-3">
-                <img 
-                  src={activeDev.avatar} 
-                  alt={activeDev.name} 
-                  className="rounded-circle object-fit-cover border border-info border-2 shadow-lg"
-                  style={{ width: '90px', height: '90px' }}
-                />
-                <span className="position-absolute bottom-0 end-0 badge bg-primary rounded-circle p-2 border border-dark">
-                  <i className="bi bi-code-slash text-white" style={{ fontSize: '0.8rem' }}></i>
-                </span>
+              <div 
+                className="rounded-circle d-inline-flex align-items-center justify-content-center fw-bold shadow-lg mb-3"
+                style={{
+                  width: '82px',
+                  height: '82px',
+                  background: 'linear-gradient(135deg, rgba(37, 99, 235, 0.35), rgba(56, 189, 248, 0.2))',
+                  border: '2px solid rgba(56, 189, 248, 0.5)',
+                  color: '#38bdf8',
+                  fontSize: '1.8rem',
+                  letterSpacing: '0.04em'
+                }}
+              >
+                {activeDev.initials}
               </div>
               <h4 className="text-white font-heading fw-bold mb-1">{activeDev.name}</h4>
               <div className="text-gradient-acm small fw-bold mb-1">{activeDev.role}</div>
               <div className="text-secondary small" style={{ fontSize: '0.78rem' }}>{activeDev.branch}</div>
             </div>
 
-            <p className="text-light small text-center leading-relaxed mb-4" style={{ fontSize: '0.86rem' }}>
+            <p className="text-light small text-center leading-relaxed mb-4" style={{ fontSize: '0.88rem' }}>
               {activeDev.bio}
             </p>
 
@@ -252,7 +255,7 @@ const Footer = () => {
                   rel="noreferrer"
                   className="btn btn-acm-primary btn-sm px-3 d-flex align-items-center gap-2"
                 >
-                  <i className="bi bi-linkedin"></i> LinkedIn Profile
+                  <i className="bi bi-linkedin"></i> LinkedIn
                 </a>
               )}
               {activeDev.github && (
@@ -262,7 +265,7 @@ const Footer = () => {
                   rel="noreferrer"
                   className="btn btn-acm-outline btn-sm px-3 d-flex align-items-center gap-2 text-light"
                 >
-                  <i className="bi bi-github"></i> GitHub Profile
+                  <i className="bi bi-github"></i> GitHub
                 </a>
               )}
             </div>
