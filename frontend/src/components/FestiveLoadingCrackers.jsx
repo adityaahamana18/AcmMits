@@ -1,8 +1,9 @@
 import React, { useEffect, useRef } from 'react';
 
 /**
- * Lightweight Festive Crackers Canvas meant exclusively for the Loading Screen.
- * Automatically halts when loading finishes to ensure zero CPU/GPU overhead on the website.
+ * High-Density Realistic 3D Crackers Explosion Canvas for Diwali Loading Screen.
+ * Features aerial multi-stage rocket bursts, golden sparkling showers,
+ * colorful blooming willow shells, and light flashes.
  */
 const FestiveLoadingCrackers = () => {
   const canvasRef = useRef(null);
@@ -22,28 +23,30 @@ const FestiveLoadingCrackers = () => {
     };
     window.addEventListener('resize', handleResize);
 
-    const colorPalettes = [
-      ['#fef08a', '#facc15', '#f59e0b', '#fb923c'], // Golden sparkle
-      ['#f43f5e', '#fb7185', '#fda4af', '#fecdd3'], // Rose burst
-      ['#38bdf8', '#0ea5e9', '#0284c7', '#bae6fd'], // Sky cyan
-      ['#a855f7', '#c084fc', '#d8b4fe', '#f3e8ff'], // Royal purple
-      ['#4ade80', '#22c55e', '#86efac', '#dcfce7']  // Emerald green
+    // Multi-color realistic cracker palettes
+    const crackerPalettes = [
+      ['#fde047', '#eab308', '#ca8a04', '#fffbeb'], // Golden Diya Sparklers
+      ['#fb923c', '#ea580c', '#c2410c', '#fff7ed'], // Fiery Orange Anar
+      ['#38bdf8', '#0284c7', '#0369a1', '#f0f9ff'], // Electric Cyan Rocket
+      ['#f43f5e', '#e11d48', '#be123c', '#ffe4e6'], // Ruby Chakri
+      ['#a855f7', '#9333ea', '#7e22ce', '#faf5ff'], // Royal Purple Sparkler
+      ['#4ade80', '#22c55e', '#16a34a', '#f0fdf4']  // Emerald Green Flash
     ];
 
     class SparkParticle {
-      constructor(x, y, color) {
+      constructor(x, y, color, isHeavy = false) {
         this.x = x;
         this.y = y;
         this.color = color;
         const angle = Math.random() * Math.PI * 2;
-        const speed = Math.random() * 4.5 + 1.2;
+        const speed = Math.random() * (isHeavy ? 6.5 : 4.5) + 1.2;
         this.vx = Math.cos(angle) * speed;
         this.vy = Math.sin(angle) * speed;
-        this.friction = 0.95;
+        this.friction = 0.955;
         this.gravity = 0.08;
         this.alpha = 1;
-        this.decay = Math.random() * 0.02 + 0.015;
-        this.radius = Math.random() * 2 + 1;
+        this.decay = Math.random() * 0.018 + 0.012;
+        this.radius = Math.random() * 2.8 + 1.2;
       }
 
       update() {
@@ -62,39 +65,80 @@ const FestiveLoadingCrackers = () => {
         context.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
         context.fillStyle = this.color;
         context.shadowColor = this.color;
-        context.shadowBlur = 8;
+        context.shadowBlur = 12;
+        context.fill();
+        context.restore();
+      }
+    }
+
+    class Rocket {
+      constructor() {
+        this.x = Math.random() * (width * 0.8) + width * 0.1;
+        this.y = height + 10;
+        this.targetY = Math.random() * (height * 0.55) + height * 0.1;
+        this.speed = Math.random() * 3 + 9;
+        this.palette = crackerPalettes[Math.floor(Math.random() * crackerPalettes.length)];
+        this.exploded = false;
+      }
+
+      update() {
+        this.y -= this.speed;
+        if (this.y <= this.targetY) {
+          this.exploded = true;
+        }
+      }
+
+      draw(context) {
+        context.save();
+        context.beginPath();
+        context.arc(this.x, this.y, 2.5, 0, Math.PI * 2);
+        context.fillStyle = '#fef08a';
+        context.shadowColor = '#facc15';
+        context.shadowBlur = 14;
         context.fill();
         context.restore();
       }
     }
 
     let particles = [];
-    let lastBurst = 0;
+    let rockets = [];
+    let lastRocketTime = 0;
 
-    const burst = (x, y) => {
-      const palette = colorPalettes[Math.floor(Math.random() * colorPalettes.length)];
-      const count = 30;
+    const burst = (x, y, palette) => {
+      const colors = palette || crackerPalettes[Math.floor(Math.random() * crackerPalettes.length)];
+      const count = Math.floor(Math.random() * 30) + 40;
       for (let i = 0; i < count; i++) {
-        const color = palette[Math.floor(Math.random() * palette.length)];
-        particles.push(new SparkParticle(x, y, color));
+        const c = colors[Math.floor(Math.random() * colors.length)];
+        particles.push(new SparkParticle(x, y, c, Math.random() > 0.5));
       }
     };
 
-    // Initial festive bursts on show
-    burst(width * 0.25, height * 0.35);
-    burst(width * 0.75, height * 0.35);
+    // Instant welcoming bursts across screen
+    burst(width * 0.2, height * 0.3);
+    burst(width * 0.8, height * 0.3);
+    burst(width * 0.5, height * 0.25);
 
     const loop = (timestamp) => {
       ctx.clearRect(0, 0, width, height);
 
-      // Periodically burst a celebration cracker on left/right edges
-      if (timestamp - lastBurst > 550) {
-        const rx = Math.random() > 0.5 ? Math.random() * (width * 0.3) + width * 0.05 : Math.random() * (width * 0.3) + width * 0.65;
-        const ry = Math.random() * (height * 0.5) + height * 0.15;
-        burst(rx, ry);
-        lastBurst = timestamp;
+      // Launch aerial cracker rockets continuously
+      if (timestamp - lastRocketTime > 380) {
+        rockets.push(new Rocket());
+        lastRocketTime = timestamp;
       }
 
+      // Update rockets
+      for (let i = rockets.length - 1; i >= 0; i--) {
+        const r = rockets[i];
+        r.update();
+        r.draw(ctx);
+        if (r.exploded) {
+          burst(r.x, r.y, r.palette);
+          rockets.splice(i, 1);
+        }
+      }
+
+      // Update explosion particles
       for (let i = particles.length - 1; i >= 0; i--) {
         const p = particles[i];
         p.update();
