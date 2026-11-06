@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { api } from '../services/api';
 import DiwaliHero from '../components/DiwaliHero';
+import { RECRUITMENT_FORM_URL } from '../constants';
 
 const Home = () => {
   const [settings, setSettings] = useState({});
@@ -317,9 +318,9 @@ chapter.build_future()`}</code>
             Join MITS ACM STUDENT CHAPTER to connect with brilliant peers, participate in hackathons, and build projects that stand out globally.
           </p>
           <div className="d-flex flex-column flex-sm-row justify-content-center gap-3 position-relative z-1">
-            <Link to="/join-us" className="btn btn-acm-primary px-4 py-2">
-              Apply For Membership <i className="bi bi-person-plus ms-1"></i>
-            </Link>
+            <a href={RECRUITMENT_FORM_URL} target="_blank" rel="noreferrer" className="btn btn-acm-primary px-4 py-2">
+              Apply For Membership <i className="bi bi-box-arrow-up-right ms-1"></i>
+            </a>
             <Link to="/contact" className="btn btn-acm-outline px-4 py-2">
               Get In Touch <i className="bi bi-envelope ms-1"></i>
             </Link>

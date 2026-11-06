@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { createPortal } from 'react-dom';
+import { RECRUITMENT_FORM_URL } from '../constants';
 import FestiveLoadingCrackers from './FestiveLoadingCrackers';
 import './DiwaliHero.css';
 
@@ -77,9 +78,9 @@ const DiwaliHero = () => {
                   <Link to="/events" className="diwali-seasonal-hero__button">
                     Explore Chapter Events <span aria-hidden="true">↗</span>
                   </Link>
-                  <Link to="/join-us" className="btn btn-acm-outline btn-sm px-3 py-2 text-info">
-                    Join Community
-                  </Link>
+                  <a href={RECRUITMENT_FORM_URL} target="_blank" rel="noreferrer" className="btn btn-acm-outline btn-sm px-3 py-2 text-info">
+                    Join Community <i className="bi bi-box-arrow-up-right small ms-1" style={{ fontSize: '0.7rem' }}></i>
+                  </a>
                 </div>
               </div>
             </div>

@@ -1,59 +1,7 @@
 import React, { useState } from 'react';
-import { api } from '../services/api';
+import { RECRUITMENT_FORM_URL } from '../constants';
 
 const JoinUs = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    college_email: '',
-    course_year: '',
-    technical_skills: '',
-    areas_of_interest: '',
-    preferred_team: 'Technical & Dev Team',
-    intro_statement: ''
-  });
-
-  const [submitting, setSubmitting] = useState(false);
-  const [successMsg, setSuccessMsg] = useState(null);
-  const [errorMsg, setErrorMsg] = useState(null);
-
-  const teamWings = [
-    'Technical & Dev Team',
-    'DSA & Competitive Programming Team',
-    'AI/ML & Data Science Team',
-    'Creative & Design Team',
-    'PR & Social Media Marketing Team',
-    'Event Management & Logistics Team'
-  ];
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setSubmitting(true);
-    setSuccessMsg(null);
-    setErrorMsg(null);
-
-    try {
-      const res = await api.submitJoinApplication(formData);
-      if (res.success) {
-        setSuccessMsg(res.message);
-        setFormData({
-          name: '',
-          college_email: '',
-          course_year: '',
-          technical_skills: '',
-          areas_of_interest: '',
-          preferred_team: 'Technical & Dev Team',
-          intro_statement: ''
-        });
-      } else {
-        setErrorMsg(res.message || 'Application submission failed.');
-      }
-    } catch (err) {
-      setErrorMsg('Network error. Unable to connect to backend server.');
-    } finally {
-      setSubmitting(false);
-    }
-  };
-
   return (
     <div className="container py-5">
       {/* Title Header */}
@@ -78,7 +26,7 @@ const JoinUs = () => {
         </div>
       </div>
 
-      <div className="row g-5">
+      <div className="row g-5 align-items-center">
         {/* Left Column: Why Join Us */}
         <div className="col-12 col-lg-6">
           <h3 className="text-white font-heading fw-bold mb-4">Why Join Our Chapter?</h3>
@@ -119,120 +67,49 @@ const JoinUs = () => {
           </div>
         </div>
 
-        {/* Right Column: Application Form */}
+        {/* Right Column: Google Form Card */}
         <div className="col-12 col-lg-6">
-          <div className="acm-card p-4 p-md-5">
-            <h4 className="text-white font-heading fw-bold mb-1">Recruitment Application</h4>
-            <p className="text-secondary small mb-4">Please submit your institutional details below.</p>
+          <div className="acm-card p-5 text-center shadow-2xl border-info border-opacity-40">
+            <div 
+              className="p-3 rounded-circle d-inline-flex align-items-center justify-content-center mb-4"
+              style={{ background: 'rgba(37, 99, 235, 0.15)', color: '#38bdf8', width: '70px', height: '70px' }}
+            >
+              <i className="bi bi-file-earmark-text-fill fs-2"></i>
+            </div>
 
-            {successMsg ? (
-              <div className="alert alert-success text-center p-4">
-                <i className="bi bi-check-circle-fill display-5 text-success d-block mb-3"></i>
-                <h5 className="fw-bold">Application Received!</h5>
-                <p className="small mb-0">{successMsg}</p>
+            <h4 className="text-white font-heading fw-bold mb-2">Official Recruitment Form</h4>
+            <p className="text-secondary small mb-4" style={{ maxWidth: '420px', margin: '0 auto' }}>
+              We are actively accepting applications for Technical, Creative, Marketing, and Event Management teams for the current session.
+            </p>
+
+            <div className="p-3 rounded-3 bg-dark border border-secondary border-opacity-25 small text-light text-start mb-4">
+              <div className="d-flex align-items-center gap-2 mb-2">
+                <i className="bi bi-check-circle-fill text-success"></i>
+                <span>Open for all undergraduate engineering batches</span>
               </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="d-flex flex-column gap-3 small">
-                {errorMsg && (
-                  <div className="alert alert-danger py-2 small mb-0">
-                    {errorMsg}
-                  </div>
-                )}
+              <div className="d-flex align-items-center gap-2 mb-2">
+                <i className="bi bi-check-circle-fill text-success"></i>
+                <span>Direct review by Executive Board & Faculty Coordinators</span>
+              </div>
+              <div className="d-flex align-items-center gap-2">
+                <i className="bi bi-check-circle-fill text-success"></i>
+                <span>Takes less than 3 minutes to complete</span>
+              </div>
+            </div>
 
-                <div>
-                  <label className="form-label text-secondary small mb-1">Full Name *</label>
-                  <input
-                    type="text"
-                    required
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    placeholder="e.g. Aditya Sharma"
-                    className="form-control form-control-sm bg-dark border-secondary border-opacity-50 text-light"
-                  />
-                </div>
+            <a
+              href={RECRUITMENT_FORM_URL}
+              target="_blank"
+              rel="noreferrer"
+              className="btn btn-acm-primary px-5 py-3 w-100 fs-6 fw-bold d-inline-flex align-items-center justify-content-center gap-2 shadow-lg"
+            >
+              <span>Open Official Google Form</span>
+              <i className="bi bi-box-arrow-up-right"></i>
+            </a>
 
-                <div>
-                  <label className="form-label text-secondary small mb-1">College Email Address *</label>
-                  <input
-                    type="email"
-                    required
-                    value={formData.college_email}
-                    onChange={(e) => setFormData({ ...formData, college_email: e.target.value })}
-                    placeholder="enrollment@mitsgwalior.in"
-                    className="form-control form-control-sm bg-dark border-secondary border-opacity-50 text-light"
-                  />
-                </div>
-
-                <div className="row g-2">
-                  <div className="col-6">
-                    <label className="form-label text-secondary small mb-1">Course & Year *</label>
-                    <input
-                      type="text"
-                      required
-                      value={formData.course_year}
-                      onChange={(e) => setFormData({ ...formData, course_year: e.target.value })}
-                      placeholder="B.Tech CSE - 2nd Year"
-                      className="form-control form-control-sm bg-dark border-secondary border-opacity-50 text-light"
-                    />
-                  </div>
-
-                  <div className="col-6">
-                    <label className="form-label text-secondary small mb-1">Preferred Team *</label>
-                    <select
-                      value={formData.preferred_team}
-                      onChange={(e) => setFormData({ ...formData, preferred_team: e.target.value })}
-                      className="form-select form-select-sm bg-dark border-secondary border-opacity-50 text-light"
-                    >
-                      {teamWings.map((w) => (
-                        <option key={w} value={w}>{w}</option>
-                      ))}
-                    </select>
-                  </div>
-                </div>
-
-                <div>
-                  <label className="form-label text-secondary small mb-1">Technical Skills & Tools</label>
-                  <input
-                    type="text"
-                    value={formData.technical_skills}
-                    onChange={(e) => setFormData({ ...formData, technical_skills: e.target.value })}
-                    placeholder="e.g. C++, Python, React, Figma, SQL"
-                    className="form-control form-control-sm bg-dark border-secondary border-opacity-50 text-light"
-                  />
-                </div>
-
-                <div>
-                  <label className="form-label text-secondary small mb-1">Areas of Interest</label>
-                  <input
-                    type="text"
-                    value={formData.areas_of_interest}
-                    onChange={(e) => setFormData({ ...formData, areas_of_interest: e.target.value })}
-                    placeholder="e.g. Competitive Programming, App Dev, UI Design"
-                    className="form-control form-control-sm bg-dark border-secondary border-opacity-50 text-light"
-                  />
-                </div>
-
-                <div>
-                  <label className="form-label text-secondary small mb-1">Short Statement / Why Join? *</label>
-                  <textarea
-                    rows={3}
-                    required
-                    value={formData.intro_statement}
-                    onChange={(e) => setFormData({ ...formData, intro_statement: e.target.value })}
-                    placeholder="Tell us what excites you about contributing to MITS ACM..."
-                    className="form-control form-control-sm bg-dark border-secondary border-opacity-50 text-light"
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  disabled={submitting}
-                  className="btn btn-acm-primary w-100 btn-sm mt-2"
-                >
-                  {submitting ? 'Submitting Application...' : 'Submit Membership Application'}
-                </button>
-              </form>
-            )}
+            <span className="text-secondary opacity-75 d-block mt-3" style={{ fontSize: '0.75rem' }}>
+              Forms are powered securely via Google Forms • Official MITS ACM Registration
+            </span>
           </div>
         </div>
       </div>
