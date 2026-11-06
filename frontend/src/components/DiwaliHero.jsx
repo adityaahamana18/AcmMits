@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { createPortal } from 'react-dom';
+import FestiveLoadingCrackers from './FestiveLoadingCrackers';
 import './DiwaliHero.css';
 
 const INTRO_SEEN_KEY = 'acm-diwali-intro-seen';
-const INTRO_DURATION_MS = 2900;
+const INTRO_DURATION_MS = 3200;
 
 const shouldPlayIntro = () => {
   if (typeof window === 'undefined' || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
@@ -87,7 +88,7 @@ const DiwaliHero = () => {
               <div
                 className="diwali-seasonal-hero__art"
                 role="img"
-                aria-label="Festive festive celebration with golden glowing diyas and mandala"
+                aria-label="Festive celebration with golden glowing diyas and mandala"
               >
                 <div className="diwali-seasonal-hero__halo diwali-seasonal-hero__halo--outer" />
                 <div className="diwali-seasonal-hero__halo diwali-seasonal-hero__halo--inner" />
@@ -118,7 +119,7 @@ const DiwaliHero = () => {
         </div>
       </section>
 
-      {/* SPECTACULAR HAPPY DIWALI LOADING SCREEN (REPLACED SINGLE DIYA WITH FESTIVE CELEBRATION) */}
+      {/* 3D-STYLED ULTRA FESTIVE DIWALI LOADING SCREEN (WITH BURSTING CRACKERS & 3D FLOATING PERSPECTIVE) */}
       {introPlaying && createPortal(
         <div
           className="festive-diwali-loader"
@@ -127,44 +128,48 @@ const DiwaliHero = () => {
           aria-label="Happy Diwali Greetings"
           onClick={finishIntro}
         >
-          {/* Background particle galaxy */}
-          <div className="festive-diwali-loader__particles" aria-hidden="true">
-            {Array.from({ length: 24 }).map((_, i) => (
-              <span key={i} className={`festive-diwali-star star-${(i % 6) + 1}`} />
-            ))}
-          </div>
+          {/* Crackers explosion background on loading screen only */}
+          <FestiveLoadingCrackers />
 
-          <div className="festive-diwali-card">
-            {/* Spinning decorative golden rings */}
-            <div className="festive-gold-ring ring-outer" />
-            <div className="festive-gold-ring ring-inner" />
+          {/* 3D Glowing Festive Greeting Container */}
+          <div className="festive-diwali-3d-wrapper">
+            <div className="festive-diwali-card festive-3d-card">
+              {/* 3D Golden Gyroscope Rings */}
+              <div className="festive-gold-ring ring-outer festive-gyro-3d" />
+              <div className="festive-gold-ring ring-inner festive-gyro-3d-reverse" />
 
-            <div className="festive-badge">
-              <i className="bi bi-sparkles text-warning me-1"></i> MITS ACM GREETINGS <i className="bi bi-sparkles text-warning ms-1"></i>
-            </div>
+              {/* Glowing 3D Lantern Icon */}
+              <div className="festive-3d-icon-bubble">
+                <i className="bi bi-stars fs-2 text-warning animate-pulse"></i>
+              </div>
 
-            <h1 className="festive-diwali-title">
-              Happy <span className="festive-glow-text">Diwali!</span>
-            </h1>
+              <div className="festive-badge">
+                ✨ MITS ACM GREETINGS ✨
+              </div>
 
-            <p className="festive-diwali-tagline">
-              ✨ Wishing you endless light, happiness, prosperity & innovative breakthroughs ✨
-            </p>
+              <h1 className="festive-diwali-title">
+                Happy <span className="festive-glow-text">Diwali!</span>
+              </h1>
 
-            {/* Glowing progress line */}
-            <div className="festive-loader-bar">
-              <div className="festive-loader-progress" />
-            </div>
+              <p className="festive-diwali-tagline">
+                May the divine radiance of the festival illuminate your ambitions, bring peace, joy & infinite success.
+              </p>
 
-            <div className="festive-action-row">
-              <span className="festive-chapter-label">MITS ACM STUDENT CHAPTER</span>
-              <button 
-                type="button" 
-                className="festive-skip-btn" 
-                onClick={(e) => { e.stopPropagation(); finishIntro(); }}
-              >
-                Enter Chapter <i className="bi bi-arrow-right ms-1"></i>
-              </button>
+              {/* Animated Progress bar */}
+              <div className="festive-loader-bar">
+                <div className="festive-loader-progress" />
+              </div>
+
+              <div className="festive-action-row">
+                <span className="festive-chapter-label">MITS ACM STUDENT CHAPTER</span>
+                <button 
+                  type="button" 
+                  className="festive-skip-btn" 
+                  onClick={(e) => { e.stopPropagation(); finishIntro(); }}
+                >
+                  Enter Site <i className="bi bi-arrow-right ms-1"></i>
+                </button>
+              </div>
             </div>
           </div>
         </div>,

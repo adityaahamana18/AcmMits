@@ -858,3 +858,69 @@
     visibility: hidden;
   }
 }
+
+
+/* ===================================================
+   3D PERSPECTIVE & GYROSCOPE STYLING FOR DIWALI LOADER
+   =================================================== */
+
+.festive-diwali-3d-wrapper {
+  perspective: 1200px;
+  position: relative;
+  z-index: 10;
+  max-width: 580px;
+  width: 100%;
+}
+
+.festive-3d-card {
+  transform-style: preserve-3d;
+  animation: cardFloat3D 4s ease-in-out infinite alternate, festiveCardEnter 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes cardFloat3D {
+  0% {
+    transform: rotateX(4deg) rotateY(-4deg) translateY(0px);
+    box-shadow: 0 25px 60px -15px rgba(234, 179, 8, 0.3), 0 0 45px -10px rgba(56, 189, 248, 0.3);
+  }
+  100% {
+    transform: rotateX(-4deg) rotateY(4deg) translateY(-12px);
+    box-shadow: 0 35px 80px -15px rgba(249, 115, 22, 0.35), 0 0 55px -10px rgba(234, 179, 8, 0.4);
+  }
+}
+
+.festive-3d-icon-bubble {
+  width: 68px;
+  height: 68px;
+  margin: 0 auto 1.25rem;
+  background: radial-gradient(circle, rgba(250, 204, 21, 0.25) 0%, rgba(249, 115, 22, 0.1) 60%, transparent 80%);
+  border: 1px solid rgba(250, 204, 21, 0.4);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 25px rgba(250, 204, 21, 0.5);
+  animation: iconPulse3D 2s infinite ease-in-out;
+}
+
+@keyframes iconPulse3D {
+  0%, 100% { transform: scale(1); box-shadow: 0 0 20px rgba(250, 204, 21, 0.4); }
+  50% { transform: scale(1.1); box-shadow: 0 0 35px rgba(249, 115, 22, 0.8); }
+}
+
+.festive-gyro-3d {
+  animation: gyroSpin3D 16s linear infinite !important;
+}
+
+.festive-gyro-3d-reverse {
+  animation: gyroSpin3DReverse 12s linear infinite !important;
+}
+
+@keyframes gyroSpin3D {
+  0% { transform: translate(-50%, -50%) rotateX(55deg) rotateZ(0deg); }
+  100% { transform: translate(-50%, -50%) rotateX(55deg) rotateZ(360deg); }
+}
+
+@keyframes gyroSpin3DReverse {
+  0% { transform: translate(-50%, -50%) rotateY(55deg) rotateZ(360deg); }
+  100% { transform: translate(-50%, -50%) rotateY(55deg) rotateZ(0deg); }
+}
