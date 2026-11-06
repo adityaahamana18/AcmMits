@@ -269,3 +269,34 @@ code, pre {
     line-height: 1.25;
   }
 }
+
+
+/* Realistic UI Polish & Animations */
+.acm-zoom-img {
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.acm-card:hover .acm-zoom-img {
+  transform: scale(1.08);
+}
+
+.acm-stat-box {
+  background: rgba(15, 23, 42, 0.65);
+  border: 1px solid rgba(59, 130, 246, 0.15);
+  transition: all 0.35s ease;
+}
+
+.acm-stat-box:hover {
+  background: rgba(30, 41, 59, 0.85);
+  border-color: rgba(56, 189, 248, 0.4);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px -5px rgba(2, 132, 199, 0.25);
+}
+
+.acm-list-hover {
+  transition: background 0.2s ease;
+}
+
+.acm-list-hover:hover {
+  background: rgba(255, 255, 255, 0.04);
+}

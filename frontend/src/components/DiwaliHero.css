@@ -639,3 +639,222 @@
     animation: none;
   }
 }
+
+/* ========================================================
+   FESTIVE HAPPY DIWALI LOADING SCREEN (REPLACES OLD DIYA)
+   ======================================================== */
+
+.festive-diwali-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  background: radial-gradient(circle at 50% 50%, #151f38 0%, #080f1d 50%, #030610 100%);
+  overflow: hidden;
+  animation: festiveFadeOut 0.5s 2.4s ease forwards;
+}
+
+.festive-diwali-loader__particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.festive-diwali-star {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #fde047;
+  box-shadow: 0 0 10px #facc15, 0 0 20px #eab308;
+  animation: festiveTwinkle 2s infinite ease-in-out;
+}
+
+.star-1 { top: 15%; left: 20%; animation-delay: 0.1s; }
+.star-2 { top: 25%; left: 75%; animation-delay: 0.4s; width: 6px; height: 6px; }
+.star-3 { top: 70%; left: 18%; animation-delay: 0.7s; }
+.star-4 { top: 80%; left: 82%; animation-delay: 0.2s; width: 5px; height: 5px; }
+.star-5 { top: 40%; left: 10%; animation-delay: 0.9s; }
+.star-6 { top: 35%; left: 88%; animation-delay: 0.5s; width: 6px; height: 6px; }
+
+@keyframes festiveTwinkle {
+  0%, 100% { opacity: 0.2; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.4); }
+}
+
+.festive-diwali-card {
+  position: relative;
+  max-width: 580px;
+  width: 100%;
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(250, 204, 21, 0.3);
+  border-radius: 2rem;
+  padding: 3rem 2.5rem;
+  text-align: center;
+  box-shadow: 0 25px 60px -15px rgba(234, 179, 8, 0.25), 0 0 40px -10px rgba(56, 189, 248, 0.2);
+  animation: festiveCardEnter 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes festiveCardEnter {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.festive-gold-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  pointer-events: none;
+  border: 1px dashed rgba(250, 204, 21, 0.2);
+}
+
+.ring-outer {
+  width: 440px;
+  height: 440px;
+  transform: translate(-50%, -50%);
+  animation: rotateClockwise 25s linear infinite;
+}
+
+.ring-inner {
+  width: 360px;
+  height: 360px;
+  transform: translate(-50%, -50%);
+  border-color: rgba(56, 189, 248, 0.25);
+  animation: rotateCounter 18s linear infinite;
+}
+
+@keyframes rotateClockwise {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes rotateCounter {
+  from { transform: translate(-50%, -50%) rotate(360deg); }
+  to { transform: translate(-50%, -50%) rotate(0deg); }
+}
+
+.festive-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: rgba(234, 179, 8, 0.12);
+  color: #fde047;
+  border: 1px solid rgba(250, 204, 21, 0.4);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  padding: 0.4rem 1rem;
+  border-radius: 9999px;
+  margin-bottom: 1.25rem;
+}
+
+.festive-diwali-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(2.5rem, 6vw, 3.8rem);
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 1rem;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.festive-glow-text {
+  background: linear-gradient(135deg, #fef08a 0%, #facc15 40%, #fb923c 70%, #ec4899 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 25px rgba(250, 204, 21, 0.6));
+  animation: festiveGlowPulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes festiveGlowPulse {
+  0% { filter: drop-shadow(0 0 15px rgba(250, 204, 21, 0.4)); }
+  100% { filter: drop-shadow(0 0 35px rgba(251, 146, 60, 0.8)); }
+}
+
+.festive-diwali-tagline {
+  color: #e2e8f0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.festive-loader-bar {
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 9999px;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+}
+
+.festive-loader-progress {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #38bdf8, #facc15, #f97316);
+  border-radius: 9999px;
+  box-shadow: 0 0 12px #facc15;
+  animation: festiveProgress 2.4s ease forwards;
+}
+
+@keyframes festiveProgress {
+  0% { width: 0%; }
+  60% { width: 75%; }
+  100% { width: 100%; }
+}
+
+.festive-action-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.festive-chapter-label {
+  color: #94a3b8;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.festive-skip-btn {
+  background: rgba(30, 41, 59, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #f1f5f9;
+  border-radius: 9999px;
+  padding: 0.35rem 0.85rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.festive-skip-btn:hover {
+  background: rgba(56, 189, 248, 0.2);
+  border-color: #38bdf8;
+  color: #38bdf8;
+  transform: translateX(2px);
+}
+
+@keyframes festiveFadeOut {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}

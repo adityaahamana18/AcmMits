@@ -2,12 +2,16 @@ import React from 'react';
 import { Outlet } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import FireworksCanvas from '../components/FireworksCanvas';
 
 const PublicLayout = () => {
   return (
-    <div className="flex flex-col min-h-screen bg-[#030712] text-slate-100 selection:bg-blue-600 selection:text-white">
+    <div className="flex flex-col min-h-screen bg-[#030712] text-slate-100 selection:bg-blue-600 selection:text-white position-relative">
+      {/* Festive Crackers & Shining Warm Lights Canvas */}
+      <FireworksCanvas />
+      
       <Navbar />
-      <main className="flex-grow">
+      <main className="flex-grow position-relative z-1">
         <Outlet />
       </main>
       <Footer />
@@ -16,4 +20,3 @@ const PublicLayout = () => {
 };
 
 export default PublicLayout;
-
