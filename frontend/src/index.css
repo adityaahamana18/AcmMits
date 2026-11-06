@@ -137,6 +137,46 @@ code, pre {
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
+.acm-navbar .navbar-brand {
+  flex: 1 1 0%;
+  min-width: 0;
+  margin-right: 0 !important;
+}
+
+.acm-navbar-brand-copy {
+  min-width: 0;
+}
+
+.acm-navbar-brand-title,
+.acm-navbar-brand-subtitle {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.acm-navbar-brand-title {
+  font-size: clamp(0.75rem, 3.8vw, 1.05rem);
+  letter-spacing: 0.04em;
+}
+
+.acm-navbar-brand-subtitle {
+  font-size: clamp(0.5rem, 2.1vw, 0.68rem);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.acm-navbar .navbar-toggler {
+  flex: 0 0 auto;
+}
+
+@media (min-width: 1400px) {
+  .acm-navbar .navbar-brand {
+    flex: 0 0 auto;
+    min-width: max-content;
+    margin-right: 1rem !important;
+  }
+}
+
 .nav-link.acm-nav-link {
   color: #cbd5e1 !important;
   font-weight: 500;
@@ -180,9 +220,52 @@ code, pre {
 /* Responsive Utilities for Mobile UI */
 @media (max-width: 768px) {
   .hero-heading {
-    font-size: 2.25rem !important;
+    font-size: clamp(1.7rem, 8vw, 2.25rem) !important;
+    line-height: 1.08;
   }
   .acm-card {
     border-radius: 1rem;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .hero-section {
+    padding-top: clamp(1rem, 3.5vh, 1.5rem) !important;
+    padding-bottom: clamp(1rem, 3.5vh, 1.5rem) !important;
+  }
+
+  .hero-affiliation {
+    margin-bottom: clamp(0.75rem, 2.5vh, 1rem) !important;
+    font-size: clamp(0.6rem, 2.7vw, 0.75rem);
+    line-height: 1.35;
+  }
+
+  .hero-heading {
+    margin-bottom: 0.75rem !important;
+  }
+
+  .hero-tagline {
+    font-size: clamp(1rem, 4.7vw, 1.4rem) !important;
+    margin-bottom: 0.25rem !important;
+  }
+
+  .hero-description {
+    font-size: clamp(0.875rem, 3.8vw, 1rem) !important;
+    line-height: 1.4;
+    margin-bottom: 1rem !important;
+  }
+
+  .hero-actions {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.5rem !important;
+  }
+
+  .hero-actions .btn {
+    min-width: 0;
+    min-height: 3.25rem;
+    padding: 0.5rem 0.3rem !important;
+    font-size: clamp(0.65rem, 2.6vw, 0.8rem);
+    line-height: 1.25;
   }
 }

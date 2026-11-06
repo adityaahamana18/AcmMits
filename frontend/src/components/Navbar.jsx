@@ -17,11 +17,11 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="navbar navbar-expand-lg acm-navbar sticky-top py-3">
+    <nav className="navbar navbar-expand-xxl acm-navbar sticky-top py-3">
       <div className="container">
         
         {/* Brand Logo & Official Chapter Name */}
-        <Link to="/" className="navbar-brand d-flex items-center gap-2 text-decoration-none me-4">
+        <Link to="/" className="navbar-brand d-flex align-items-center gap-2 text-decoration-none">
           <div 
             className="p-1 rounded-3 d-flex align-items-center justify-content-center"
             style={{
@@ -34,11 +34,11 @@ const Navbar = () => {
               <img src="/acm-logo.svg" alt="ACM Logo" width="26" height="26" />
             </div>
           </div>
-          <div className="d-flex flex-column">
-            <span className="fw-bolder text-white font-heading lh-1" style={{ fontSize: '1.05rem', letterSpacing: '0.04em' }}>
+          <div className="d-flex flex-column acm-navbar-brand-copy">
+            <span className="fw-bolder text-white font-heading lh-1 acm-navbar-brand-title">
               MITS ACM STUDENT CHAPTER
             </span>
-            <span className="text-secondary" style={{ fontSize: '0.68rem', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
+            <span className="text-secondary acm-navbar-brand-subtitle">
               Madhav Institute of Technology & Science
             </span>
           </div>
@@ -58,8 +58,8 @@ const Navbar = () => {
         </button>
 
         {/* Collapsible Nav Links */}
-        <div className={`collapse navbar-collapse ${navExpanded ? 'show mt-3 mt-lg-0' : ''}`} id="acmNavbarNav">
-          <ul className="navbar-nav ms-auto align-items-lg-center gap-1 mb-2 mb-lg-0">
+        <div className={`collapse navbar-collapse ${navExpanded ? 'show mt-3 mt-xxl-0' : ''}`} id="acmNavbarNav">
+          <ul className="navbar-nav ms-auto align-items-xxl-center gap-1 mb-2 mb-xxl-0">
             {navLinks.map((link) => (
               <li key={link.name} className="nav-item">
                 <NavLink
@@ -75,11 +75,11 @@ const Navbar = () => {
             ))}
           </ul>
 
-          <div className="d-flex align-items-center gap-2 ms-lg-3 mt-3 mt-lg-0">
+          <div className="d-flex align-items-center gap-2 ms-xxl-3 mt-3 mt-xxl-0">
             <Link
               to="/join-us"
               onClick={() => setNavExpanded(false)}
-              className="btn btn-acm-primary btn-sm px-3 py-2 w-100 w-lg-auto text-center"
+              className="btn btn-acm-primary btn-sm px-3 py-2 w-100 w-xxl-auto text-center"
             >
               <i className="bi bi-person-plus me-1"></i> Join Us
             </Link>

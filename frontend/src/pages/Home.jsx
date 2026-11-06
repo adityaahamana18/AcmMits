@@ -58,13 +58,13 @@ const Home = () => {
       )}
 
       {/* HERO SECTION */}
-      <section className="container py-5 my-md-4 text-center position-relative z-1">
+      <section className="container py-5 my-md-4 text-center position-relative z-1 hero-section">
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6 }}
         >
-          <span className="badge-acm mb-4 d-inline-flex align-items-center gap-2">
+          <span className="badge-acm mb-4 d-inline-flex align-items-center gap-2 hero-affiliation">
             <i className="bi bi-stars text-info"></i> Affiliated with ACM (Association for Computing Machinery)
           </span>
 
@@ -73,16 +73,16 @@ const Home = () => {
             <span className="text-gradient-acm">STUDENT CHAPTER</span>
           </h1>
 
-          <p className="fs-4 fw-semibold text-light mb-2 font-heading" style={{ letterSpacing: '0.05em' }}>
+          <p className="fs-4 fw-semibold text-light mb-2 font-heading hero-tagline" style={{ letterSpacing: '0.05em' }}>
             {settings.tagline || 'Code. Create. Connect.'}
           </p>
 
-          <p className="lead text-secondary mx-auto mb-5" style={{ maxWidth: '640px', fontSize: '1.15rem' }}>
+          <p className="lead text-secondary mx-auto mb-5 hero-description" style={{ maxWidth: '640px', fontSize: '1.15rem' }}>
             {settings.hero_supporting_text || 'Empowering the next generation of computing professionals at MITS Gwalior.'}
           </p>
 
           {/* CTA Buttons - fully responsive */}
-          <div className="d-flex flex-column flex-sm-row justify-content-center gap-3">
+          <div className="d-flex flex-column flex-sm-row justify-content-center gap-3 hero-actions">
             <Link to="/events" className="btn btn-acm-primary px-4 py-3 d-flex align-items-center justify-content-center gap-2">
               <span>Explore Events</span>
               <i className="bi bi-calendar-event"></i>
