@@ -24,16 +24,16 @@ const Navbar = () => {
         {/* Brand Logo & Official Chapter Name */}
         <Link to="/" className="navbar-brand d-flex items-center gap-2 text-decoration-none me-4">
           <div 
-            className="p-1 rounded-3 d-flex align-items-center justify-content-center"
+            className="rounded-circle overflow-hidden flex-shrink-0 d-flex align-items-center justify-content-center"
             style={{
-              background: 'linear-gradient(135deg, #2563eb, #38bdf8, #7c3aed)',
+              background: '#fff',
+              border: '2px solid rgba(96, 165, 250, 0.8)',
+              boxShadow: '0 0 12px rgba(37, 99, 235, 0.25)',
               width: '42px',
               height: '42px'
             }}
           >
-            <div className="bg-dark rounded-2 w-100 h-100 d-flex align-items-center justify-content-center">
-              <img src="/acm-logo.svg" alt="ACM Logo" width="26" height="26" />
-            </div>
+            <img src="/mits-acm-logo.png" alt="MITS ACM Student Chapter logo" width="42" height="42" className="w-100 h-100 object-fit-cover" />
           </div>
           <div className="d-flex flex-column">
             <span className="fw-bolder text-white font-heading lh-1" style={{ fontSize: '1.05rem', letterSpacing: '0.04em' }}>

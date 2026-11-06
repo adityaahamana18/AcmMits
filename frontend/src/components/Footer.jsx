@@ -28,14 +28,15 @@ const Footer = () => {
           <div className="col-12 col-md-6 col-lg-4">
             <div className="d-flex align-items-center gap-2 mb-3">
               <div 
-                className="p-1 rounded-2 d-flex align-items-center justify-content-center"
+                className="rounded-circle overflow-hidden flex-shrink-0 d-flex align-items-center justify-content-center"
                 style={{
-                  background: 'linear-gradient(135deg, #2563eb, #38bdf8)',
+                  background: '#fff',
+                  border: '1px solid rgba(96, 165, 250, 0.8)',
                   width: '36px',
                   height: '36px'
                 }}
               >
-                <img src="/acm-logo.svg" alt="ACM Logo" width="22" height="22" />
+                <img src="/mits-acm-logo.png" alt="MITS ACM Student Chapter logo" width="36" height="36" className="w-100 h-100 object-fit-cover" />
               </div>
               <span className="fw-bold text-white font-heading" style={{ fontSize: '1rem', letterSpacing: '0.03em' }}>
                 MITS ACM STUDENT CHAPTER
