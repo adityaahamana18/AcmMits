@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom';
 import { RECRUITMENT_FORM_URL } from '../constants';
 import './DiwaliHero.css';
 
+const DIYA_IMAGE = '/assets/diwali-diyas.png';
+const MITHAI_IMAGE = '/assets/diwali-mithai.png';
+
 const DiwaliHero = () => {
   return (
       <section className="diwali-seasonal-hero">
@@ -46,21 +49,15 @@ const DiwaliHero = () => {
               <div
                 className="diwali-seasonal-hero__art"
                 role="img"
-                aria-label="Festive celebration with golden glowing diyas and mandala"
+                aria-label="Glowing Diwali diyas and a bowl of Indian sweets"
               >
                 <div className="diwali-seasonal-hero__halo diwali-seasonal-hero__halo--outer" />
                 <div className="diwali-seasonal-hero__halo diwali-seasonal-hero__halo--inner" />
                 <div className="diwali-seasonal-hero__mandala" aria-hidden="true">
                   {Array.from({ length: 8 }, (_, index) => <span key={index} />)}
                 </div>
-                {[['back', 'diwali-seasonal-hero__diya--back'], ['front', 'diwali-seasonal-hero__diya--front']].map(([key, className]) => (
-                  <div className={`diwali-seasonal-hero__diya ${className}`} key={key} aria-hidden="true">
-                    <span className="diwali-seasonal-hero__flame" />
-                    <span className="diwali-seasonal-hero__wick" />
-                    <span className="diwali-seasonal-hero__bowl"><i /></span>
-                    <span className="diwali-seasonal-hero__glow" />
-                  </div>
-                ))}
+                <img className="diwali-seasonal-hero__photo diwali-seasonal-hero__photo--diya" src={DIYA_IMAGE} alt="" />
+                <img className="diwali-seasonal-hero__photo diwali-seasonal-hero__photo--mithai" src={MITHAI_IMAGE} alt="" />
                 <span className="diwali-seasonal-hero__petal diwali-seasonal-hero__petal--one" aria-hidden="true" />
                 <span className="diwali-seasonal-hero__petal diwali-seasonal-hero__petal--two" aria-hidden="true" />
                 <span className="diwali-seasonal-hero__petal diwali-seasonal-hero__petal--three" aria-hidden="true" />
